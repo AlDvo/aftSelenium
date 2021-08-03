@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -56,7 +57,7 @@ public class TaskWork1Test {
         fill(By.xpath("//*[@class = 'row']//*[@name='LastName']"),"Фамилия");
         fill(By.xpath("//*[@class = 'row']//*[@name='FirstName']"),"Имя");
         fill(By.xpath("//*[@class = 'row']//*[@name='MiddleName']"),"Отчество");
-        fill(By.xpath("//*[contains(@data-bind,'Phone')]"),"9991231236");
+        fillPhone(By.xpath("//*[contains(@data-bind,'Phone')]")," (799) 912-31-23");
         fill(By.xpath("//*[@class = 'row']//*[@name='Email']"),"qwertyqwerty");
         fill(By.xpath("//*[@class = 'row']//*[@name='Comment']"),"комментарий");
 
@@ -72,14 +73,6 @@ public class TaskWork1Test {
             e.printStackTrace();
         }
 
-        Assert.assertEquals("Данные не совпадают", "Фамилия",driver.findElement(By.xpath("//*[@class = 'row']//*[@name='LastName']")).getAttribute("value"));
-        Assert.assertEquals("Данные не совпадают", "Имя",driver.findElement(By.xpath("//*[@class = 'row']//*[@name='FirstName']")).getAttribute("value"));
-        Assert.assertEquals("Данные не совпадают", "Отчество",driver.findElement(By.xpath("//*[@class = 'row']//*[@name='MiddleName']")).getAttribute("value"));
-//        Assert.assertEquals("Данные не совпадают", "+7 (999) 123-12-36",driver.findElement(By.xpath("//*[contains(@data-bind,'Phone')]")).getAttribute("value"));
-        Assert.assertEquals("Данные не совпадают", "qwertyqwerty",driver.findElement(By.xpath("//*[@class = 'row']//*[@name='Email']")).getAttribute("value"));
-        Assert.assertEquals("Данные не совпадают", "комментарий",driver.findElement(By.xpath("//*[@class = 'row']//*[@name='Comment']")).getAttribute("value"));
-        Assert.assertEquals("Москва", new Select(driver.findElement(By.xpath("//*[@class = 'row']//*[@name='Region']"))).getAllSelectedOptions().get(0).getText());
-
         driver.findElement(By.xpath("//*[@class = 'col-md-12 col-xs-12']//*[@type='button']")).click();
 
         WebElement mistake = driver.findElement(By.xpath("//*[text()='Введите адрес электронной почты']"));
@@ -89,6 +82,16 @@ public class TaskWork1Test {
     public void fill(By locator , String value){
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(value);
+        Assert.assertEquals("Данные не совпадают", value ,driver.findElement(locator).getAttribute("value"));
+
+    }
+
+    public void fillPhone(By locator , String value){
+        driver.findElement(locator).sendKeys(Keys.CONTROL + "a" + Keys.BACK_SPACE);
+        driver.findElement(locator).sendKeys(value);
+        String str = "+7" + value;
+        Assert.assertEquals("Данные не совпадают", str ,driver.findElement(locator).getAttribute("value"));
+
     }
 
     @After
