@@ -2,7 +2,6 @@ package TaskWork.taskwork2;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 public class TaskWork2Test extends BaseTest{
 
@@ -24,8 +23,10 @@ public class TaskWork2Test extends BaseTest{
 
         passportNotRF(By.xpath("//h3[contains(text(),'Паспорт')]"));
 
-        select(By.xpath("//span[@data-marker ='Select.value.Value']"));
- //       new Select(driver.findElement(By.xpath("//span[@data-marker ='Select.value.Value']"))).selectByVisibleText("Германия");
+        select(By.xpath("//div[@name ='citizenship']"));
+        select(By.xpath("//div[text() = 'Германия']"));
+        chekSelect("Германия",By.xpath("//div[@name ='citizenship']//span[text() = 'Германия']"));
+
 
         fill(By.xpath("//input[@name = 'foreignSeries']"),"2200");
         fill(By.xpath("//input[@name = 'foreignNumber']"),"321321");
@@ -35,7 +36,12 @@ public class TaskWork2Test extends BaseTest{
 
         select(By.xpath("//button[text()='Продолжить']"));
 
-        chekSelect("Поле обязательно для заполнения",By.xpath("//*[text() ='Поле обязательно для заполнения']"));
+        chekSelect("Поле обязательно для заполнения",By.xpath("//div[text()='Ежемесячный доход']/../div[text()='Поле обязательно для заполнения']"));
+        chekSelect("Поле обязательно для заполнения",By.xpath("//div[text()='Могу подтвердить с помощью']/../div[text()='Поле обязательно для заполнения']"));
+        chekSelect("Выберите из списка", By.xpath("//div[text()='Город приобретаемой недвижимости']/../div[text()='Выберите из списка']"));
+        chekSelect("Поле обязательно для заполнения",By.xpath("//div[text()='E-mail']/../div[text()='Поле обязательно для заполнения']"));
+        chekSelect("Поле обязательно для заполнения",By.xpath("//div[text()='Телефон']/../div[text()='Поле обязательно для заполнения']"));
+        chekSelect("Поле обязательно для заполнения",By.xpath("//label[@data-marker='Checkbox.Box']/../div[text()='Поле обязательно для заполнения']"));
 
     }
 }
