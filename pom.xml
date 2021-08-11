@@ -76,6 +76,10 @@
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
+                    <argLine>
+                        -Xmx1024m
+                        -Dfile.encoding=${encoding.type}
+                    </argLine>
                 </configuration>
             </plugin>
 
