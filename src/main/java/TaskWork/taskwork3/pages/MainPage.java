@@ -1,9 +1,7 @@
 package TaskWork.taskwork3.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BasePage {
 
@@ -19,20 +17,18 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div[@class= 'container']//span[@class='ui-input-search__icon ui-input-search__icon_search ui-input-search__icon_presearch']")
     WebElement magnifier;
 
-    public MainPage(WebDriver driver){
-        PageFactory.initElements(driver , this);
-        this.driver = driver;
-    }
 
-    public void Search(String product){
+    public SearchPage Search(String product){
         search.clear();
         search.sendKeys(product);
         magnifier.click();
+        return new SearchPage();
     }
 
-    public void selectTown(){
+    public MainPage selectTown(){
         if(townAsk.isEnabled()){
             town.click();
         }
+        return this;
     }
 }

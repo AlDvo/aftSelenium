@@ -2,10 +2,8 @@ package TaskWork.taskwork3.pages;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class BasketPage extends BasePage{
 
@@ -25,62 +23,64 @@ public class BasketPage extends BasePage{
     WebElement returnDeletProduct;
 
 
-    public BasketPage(WebDriver driver){
-        PageFactory.initElements(driver , this);
-        this.driver = driver;
-    }
-
-    public void selectWarranty(){
+    public BasketPage selectWarranty(){
         warranty.click();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return this;
     }
 
     public int rememberPriceBasket(){
         return Integer.parseInt(priceBasket.getText());
     }
 
-    public void checkWarranty(){
+    public BasketPage checkWarranty(){
         radioButtonWarranty.getAttribute("class").contains("base-ui-radio-button__icon base-ui-radio-button__icon_checked");
+        return this;
     }
 
-    public void selectMainPage(){
+    public MainPage selectMainPage(){
         mainPage.click();
+        return new MainPage();
     }
 
-    public void selectDeletProduct(String value){
-        driver.findElement(By.xpath("//a[contains(text(),'"+value+"')]/../..//button[text() = 'Удалить']" )).click();
+    public BasketPage selectDeletProduct(String value){
+        driverManager.getDriver().findElement(By.xpath("//a[contains(text(),'"+value+"')]/../..//button[text() = 'Удалить']" )).click();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return this;
     }
 
-    public  void searchProduct(String value){
+    public  BasketPage searchProduct(String value){
         if(isElementPresent(By.xpath("//a[contains(text(),'"+value+"')]"))==true){
             Assertions.assertAll();
-        };
+        }
+        return this;
     }
 
-    public void addProduct(String value) {
-        driver.findElement(By.xpath("//*[contains(text(),'" + value + "')]/../../../../..//div[@class= 'count-buttons']//i[@class = 'count-buttons__icon-plus']" )).click();
+    public BasketPage addProduct(String value) {
+        driverManager.getDriver().findElement(By.xpath("//*[contains(text(),'" + value + "')]/../../../../..//div[@class= 'count-buttons']//i[@class = 'count-buttons__icon-plus']" )).click();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return this;
     }
 
-    public void selectReturnDeletProduct(){
+    public BasketPage selectReturnDeletProduct(){
         returnDeletProduct.click();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return this;
     }
 }

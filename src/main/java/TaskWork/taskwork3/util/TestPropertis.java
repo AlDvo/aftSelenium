@@ -29,7 +29,7 @@ public class TestPropertis {
      * Конструктор специально был объявлен как private (singleton паттерн)
      * Происходит загрузка содержимого файла application.properties в переменную {@link #properties}
      *
-     * @see TestPropertis#getTestProperties()
+     * @see TestPropertis#getTestPropertis()
      */
     private TestPropertis() {
         loadApplicationProperties();
@@ -42,7 +42,7 @@ public class TestPropertis {
      *
      * @return TestPropManager - возвращает TestPropManager
      */
-    public static TestPropertis getTestProperties() {
+    public static TestPropertis getTestPropertis() {
         if (INSTANCE == null) {
             INSTANCE = new TestPropertis();
         }
@@ -58,9 +58,8 @@ public class TestPropertis {
      */
     private void loadApplicationProperties() {
         try {
-            properties.load(new FileInputStream(
-                    new File("src/main/resources/" +
-                            System.getProperty("propFile", "application") + ".properties")));
+            properties.load(new FileInputStream("src/main/resources/" +
+                            System.getProperty("propFile", "environment") + ".prorepties"));
         } catch (IOException e) {
             e.printStackTrace();
         }

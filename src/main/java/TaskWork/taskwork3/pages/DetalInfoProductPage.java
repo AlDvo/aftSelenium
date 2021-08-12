@@ -1,9 +1,7 @@
 package TaskWork.taskwork3.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class DetalInfoProductPage extends BasePage{
 
@@ -20,24 +18,21 @@ public class DetalInfoProductPage extends BasePage{
     WebElement inBasket;
 
 
-    public DetalInfoProductPage(WebDriver driver){
-        PageFactory.initElements(driver , this);
-        this.driver = driver;
-    }
-
     public int rememberPriceDetal(){
         return Integer.parseInt(priceDetal.getText());
     }
 
-    public void selectBuy(){
+    public DetalInfoProductPage selectBuy(){
         buy.click();
+        return this;
     }
 
     public int rememberPriceBasket(){
         return Integer.parseInt(basket.getText());
     }
 
-    public void selectInBasket(){
+    public BasketPage selectInBasket(){
         inBasket.click();
+        return new BasketPage();
     }
 }
