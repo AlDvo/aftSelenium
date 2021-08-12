@@ -50,7 +50,7 @@ public class BasketPage extends BasePage{
     public BasketPage selectDeletProduct(String value){
         driverManager.getDriver().findElement(By.xpath("//a[contains(text(),'"+value+"')]/../..//button[text() = 'Удалить']" )).click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
