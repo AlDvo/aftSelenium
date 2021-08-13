@@ -3,6 +3,7 @@ package TaskWork.taskwork4_1.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage extends BasePage {
 
@@ -21,6 +22,7 @@ public class MainPage extends BasePage {
 
     @Step("Ввели в поисковую строку '{product}' и нажали поиск")
     public SearchPage Search(String product){
+        wait.until(ExpectedConditions.elementToBeClickable(search));
         search.clear();
         search.sendKeys(product);
         magnifier.click();

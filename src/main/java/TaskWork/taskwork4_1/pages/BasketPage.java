@@ -80,11 +80,7 @@ public class BasketPage extends BasePage {
     @Step("Вернуть удаленный товар ,проверяем что товар '{value}'  в корзине")
     public BasketPage selectReturnDeletProduct(String value){
         returnDeletProduct.click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'"+value+"')]")));
         if(isElementPresent(By.xpath("//a[contains(text(),'"+value+"')]"))==false){
             Assertions.fail("Объекта нет в корзине");
         }

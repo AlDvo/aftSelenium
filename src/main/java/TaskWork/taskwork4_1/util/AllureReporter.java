@@ -5,7 +5,6 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.junit5.AllureJunit5;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import org.junit.runner.notification.Failure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 

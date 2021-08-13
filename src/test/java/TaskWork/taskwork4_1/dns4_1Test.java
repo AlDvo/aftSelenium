@@ -1,6 +1,6 @@
 package TaskWork.taskwork4_1;
 
-import TaskWork.taskwork4_1.pages.MainPage;
+import TaskWork.taskwork4_1.pages.*;
 import org.junit.jupiter.api.Test;
 
 public class dns4_1Test extends BaseTest {
@@ -8,7 +8,7 @@ public class dns4_1Test extends BaseTest {
 
 
     @Test
-    public void dnsTest(){
+    public void dns4_1Test(){
 
         mainPage.selectTown()
                 .Search("Samsung S10")
