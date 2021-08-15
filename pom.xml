@@ -24,6 +24,8 @@
         <selenium-java.version>3.141.59</selenium-java.version>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
         <junit-platform-launcher.version>1.7.0</junit-platform-launcher.version>
+        <cucumber-java.version>5.7.0</cucumber-java.version>
+        <cucumber-junit.version>5.7.0</cucumber-junit.version>
         <allure-junit5>2.13.5</allure-junit5>
         <aspectj.version>1.9.7</aspectj.version>
         <junit-vintage-engine.version>5.7.1</junit-vintage-engine.version>
@@ -59,6 +61,20 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
             <version>${junit-platform-launcher.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-java.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber-junit.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
@@ -99,7 +115,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <includes>**/*4_1Test.java</includes>
+                    <includes>**/**4_2Test.java</includes>
                     <argLine>
                         -Xmx1024m
                         -Dfile.encoding=${encoding.type}
